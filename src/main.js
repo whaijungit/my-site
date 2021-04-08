@@ -1,12 +1,9 @@
 import Vue from 'vue'
 import App from './App.vue'
-import router from './router'
-import store from './store'
-
-Vue.config.productionTip = false
-
+// import '@/assets/styles/globa.less'
+import axios from 'axios';
 new Vue({
-  router,
-  store,
   render: h => h(App)
 }).$mount('#app')
+
+axios.get('/erp/role',).then(r=>{console.log(r)})

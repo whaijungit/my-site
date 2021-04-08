@@ -4,10 +4,18 @@
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build"
+    "build": "vue-cli-service build",
+    "test:Aavatar": "vue serve ./src/components/Aavatar/Test.vue",
+    "test:Icon": "vue serve ./src/components/Icon/Test.vue",
+    "test:Pager": "vue serve ./src/components/Pager/Test.vue",
+    "test:Empty": "vue serve ./src/components/Empty/Test.vue",
+    "test:ImageLoader": "vue serve ./src/components/ImageLoader/Test.vue",
+    "test:SiteAside:Contact": "vue serve ./src/components/SiteAside/Contact/Test.vue",
+    "test:SiteAside:Menu": "vue serve ./src/components/SiteAside/Menu/Test.vue"
   },
   "dependencies": {
     "core-js": "^3.6.5",
+    "view-design": "^4.5.0",
     "vue": "^2.6.11",
     "vue-router": "^3.2.0",
     "vuex": "^3.4.0"
