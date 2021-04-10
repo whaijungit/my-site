@@ -29,7 +29,6 @@ export default {
           type: "home",
           title: "首页",
           selected: true,
-          // component:
         },
         {
           link: "/articl",

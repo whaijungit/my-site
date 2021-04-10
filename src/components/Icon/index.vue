@@ -6,7 +6,7 @@
 const classMap = {
   home: "icon-zhuye",
   success: "icon-success",
-  error: "icon-icon-test",
+  error: "icon-jinggao",
   close: "icon-guanbi",
   warn: "icon-jinggao",
   info: "icon-info",

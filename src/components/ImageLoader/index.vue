@@ -11,7 +11,6 @@
       @load="handleLoad"
       :style="{ opacity: opacityOrigin, transition: `${duration}ms` }"
     />
-    {{ opacityOrigin }}
   </div>
 </template>
 
