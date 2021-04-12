@@ -25,7 +25,7 @@
       </a>
       <div class="pop">
         <img
-          src="https://gw.alicdn.com/tps/TB1W_X6OXXXXXcZXVXXXXXXXXXX-400-400.png"
+          src="@/assets/image/QRcode.jpg"
           alt=""
         />
       </div>
@@ -39,7 +39,7 @@
       </a>
       <div class="pop">
         <img
-          src="https://gw.alicdn.com/tps/TB1W_X6OXXXXXcZXVXXXXXXXXXX-400-400.png"
+          src="@/assets/image/QRcode.jpg"
           alt=""
         />
       </div>
@@ -83,8 +83,11 @@ export default {
     align-items: center;
   }
   .icon {
-    font-size: 26px;
-    width: 30px;
+    font-size: 12px;
+    width: 20px;
+    span {
+      font-size: 12px;
+    }
   }
   .pop {
     position: absolute;
@@ -94,8 +97,8 @@ export default {
     transform-origin: center bottom;
     transition: .3s;
     img {
-      width: 150px;
-      height: 150px;
+      width: 100px;
+      height: 100px;
       padding: 10px 15px;
       background: #fff;
       border-radius: 5px;

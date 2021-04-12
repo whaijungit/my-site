@@ -1,16 +1,18 @@
 <template>
   <nav class="menu-container">
-    <a
+    <RouterLink
+      :exact="item.exact"
       v-for="item in items"
-      :key="item.type"
-      :href="item.link"
-      :class="{ selected: item.selected }"
+      :to="{name: item.name}"
+      :key="item.name"
+      active-class="selected"
+      exact-active-class=""
     >
       <div class="icon">
-        <Icon :type="item.type" />
+        <Icon :type="item.icon" />
       </div>
       <span>{{ item.title }}</span>
-    </a>
+    </RouterLink>
   </nav>
 </template>
 
@@ -25,34 +27,34 @@ export default {
     return {
       items: [
         {
-          link: "/",
-          type: "home",
+          name: "Home",
+          icon: "home",
           title: "首页",
-          selected: true,
+          exact: true
         },
         {
-          link: "/articl",
-          type: "blog",
+          name: "Blog",
+          icon: "blog",
           title: "文章",
-          selected: false,
+          exact: false
         },
         {
-          link: "/project",
-          type: "project",
+          name: "Project",
+          icon: "project",
           title: "项目&效果",
-          selected: false,
+          exact: true
         },
         {
-          link: "/about",
-          type: "about",
+          name: "About",
+          icon: "about",
           title: "关于我",
-          selected: false,
+          exact: true
         },
         {
-          link: "/message",
-          type: "chat",
+          name: "Message",
+          icon: "chat",
           title: "留言",
-          selected: false,
+          exact: true
         },
       ],
     };
@@ -64,24 +66,24 @@ export default {
 @import "~@/assets/styles/var.less";
 
 .menu-container {
-  margin: 24px 0;
   a {
     display: flex;
     align-items: center;
-    font-size: 18px;
+    font-size: 14px;
+    white-space: nowrap;
     color: @gray;
     padding: 0 50px;
     text-decoration: none;
     height: 45px;
     .icon {
-      width: 24px;
-      font-size: 18px;
+      width: 30px;
+      font-size: 20px;
     }
     &:hover {
       color: #fff;
     }
     &.selected {
-      background: #232323;
+      background: darken(@words, 3%);
     }
   }
 }

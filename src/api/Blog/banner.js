@@ -1,6 +1,6 @@
 import request from '../Request/request'
 
-export async function getBanners(url) {
-  return await request.get(url)
+export async function getBanners() {
+  return await request.get("/api/banner")
 }
 

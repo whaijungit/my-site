@@ -13,7 +13,34 @@
 
 .position-bottom(@position:absolute) {
   position: @position;
-  left:15vw;
+  left: 15vw;
   bottom: 6vh;
   transform: translate(-50%, -50%);
+}
+
+@jump: 5px;
+@jumpUp: jump-up;
+@jumpDown: jump-down;
+
+@keyframes @jumpUp {
+  0% {
+    transform: translate(-50%, @jump);
+  }
+  50% {
+    transform: translate(-50%, -@jump);
+  }
+  0% {
+    transform: translate(-50%, @jump);
+  }
+}
+@keyframes @jumpDown {
+  0% {
+    transform: translate(-50%, -@jump);
+  }
+  50% {
+    transform: translate(-50%, @jump);
+  }
+  0% {
+    transform: translate(-50%, -@jump);
+  }
 }

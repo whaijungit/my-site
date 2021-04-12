@@ -1,15 +1,15 @@
 <template>
-  <div class="pager-container" v-if="totlaPageNumber">
+  <div class="pager-container" v-if="totalPageNumber">
     <div class="position">
       <Icon
-        @click="handleClick(1)"
+        @click.native="handleClick(1)"
         type="upLink"
         :class="{
           disabled: current === 1,
         }"
       ></Icon>
       <Icon
-        @click="handleClick(current - 1)"
+        @click.native="handleClick(current - 1)"
         type="upLink"
         :class="{
           disabled: current === 1,
@@ -26,13 +26,13 @@
 
       <Icon
         type="dowLink"
-        :class="{ disabled: current === totlaPageNumber }"
-        @click="handleClick(current + 1)"
+        :class="{ disabled: current === totalPageNumber }"
+        @click.native="handleClick(current + 1)"
       />
       <Icon
         type="dowLink"
-        :class="{ disabled: current === totlaPageNumber }"
-        @click="handleClick(totlaPageNumber)"
+        :class="{ disabled: current === totalPageNumber }"
+        @click.native="handleClick(totalPageNumber)"
       />
     </div>
   </div>
@@ -46,7 +46,7 @@ export default {
       type: Number,
       default: 1,
     },
-    totla: {
+    total: {
       type: Number,
       default: 3000,
     },
@@ -61,8 +61,8 @@ export default {
   },
   computed: {
     // 总页数
-    totlaPageNumber() {
-      return Math.ceil(this.totla / this.limit);
+    totalPageNumber() {
+      return Math.ceil(this.total / this.limit);
     },
     // 每页显示最小页码
     visiblePageMin() {
@@ -75,8 +75,8 @@ export default {
     },
     visiblePageMax() {
       let max = this.visiblePageMin + this.visibleNumber - 1;
-      if (max > this.totlaPageNumber) {
-        max = this.totlaPageNumber;
+      if (max > this.totalPageNumber) {
+        max = this.totalPageNumber;
       }
       return max;
     },
@@ -98,8 +98,8 @@ export default {
       if (newPage < 1) {
         newPage = 1;
       }
-      if (newPage > this.totlaPageNumber) {
-        newPage = this.totlaPageNumber;
+      if (newPage > this.totalPageNumber) {
+        newPage = this.totalPageNumber;
       }
       if (newPage === this.current) {
         return;
