@@ -36,6 +36,7 @@ export default {
   overflow-y: auto;
   text-align: center; 
   box-sizing: border-box;
+  position: relative;
   .avatar {
     margin: 20px auto;
   }
@@ -43,9 +44,8 @@ export default {
     color: rgba(255, 255, 255, 0.7);
     font-size: 12px;
     white-space: nowrap;
-    position: absolute;
-    bottom: 36px;
-    left: 10%;
+    // position: absolute;
+    bottom: 0px;
   }
 }
 </style>

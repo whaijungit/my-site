@@ -18,7 +18,6 @@ export default function (options = {}) {
   div.innerHTML = `<span class="${styles.icon}">${el.outerHTML}</span><div>${content}<div>`;
   if (getComputedStyle(container).position && getComputedStyle(container).position === 'static') {
     container.style.position = 'relative';
-    container.style.height = '100vh';
   }
   else {
     div.style.position = styles.message

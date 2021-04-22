@@ -3,13 +3,16 @@ import Vuex from 'vuex'
 
 Vue.use(Vuex)
 
-export default new Vuex.Store({
-  state: {
+
+const store = new Vuex.Store({
+  state: { // 仓库数据
   },
-  mutations: {
+  mutations: { // 数据有哪些变化
   },
   actions: {
-  },
-  modules: {
   }
 })
+
+window.store = store;
+
+export default store

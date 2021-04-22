@@ -17,6 +17,7 @@
 import Layout from "@/components/Layout";
 import SiteAside from "@/components/SiteAside";
 export default {
+  name: "App",
   components: {
     Layout,
     SiteAside,
@@ -29,7 +30,7 @@ export default {
   width: 100%;
   height: 100vh;
   .aside {
-    width: 200px;
+    width: 10rem;
     height: 100%;
     position: relative;
   }

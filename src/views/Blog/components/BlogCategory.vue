@@ -74,7 +74,7 @@ export default {
 <style scoped lang="less">
 .blog-category-container {
   width: 300px;
-  padding: 20px 20px;
+  padding: 15px 20px;
   box-sizing: border-box;
   position: relative;
   height: 100%;

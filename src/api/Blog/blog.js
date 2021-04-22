@@ -59,7 +59,7 @@ export async function getComments(page, limit, blogId) {
   return await requset.get('/api/comment', {
     params: {
       page,
-      limitm,
+      limit,
       blogId
     }
   })

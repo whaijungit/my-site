@@ -1,4 +1,4 @@
-# 项目组件文档
+# COMP文档
 
 ## 头像组件
 
@@ -16,7 +16,7 @@
 VueJS参考文档：[样式绑定](https://cn.vuejs.org/v2/guide/class-and-style.html)、[局部组件注册](https://cn.vuejs.org/v2/guide/components-registration.html#%E5%B1%80%E9%83%A8%E6%B3%A8%E5%86%8C)
 、[数据校验](https://cn.vuejs.org/v2/guide/components-props.html#Prop-%E9%AA%8C%E8%AF%81)
 
-```html
+```vue
 <div>
 <!-- 放置一个元素 -->
 <img :src="url" :style="{
@@ -61,7 +61,5 @@ export default {
 
 v-show：使用与分页组件中数据频繁变化的时候应当使用v-show这个方案、不对dom节点进行移出操作、不会导致页面重排
 
-```vue
 
 
-```

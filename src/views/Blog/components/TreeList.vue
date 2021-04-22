@@ -16,7 +16,8 @@
       >
         {{ item.aside }}
       </span>
-      <TreeList :list="item.children" @select="handleClick" />
+      <!-- Treelist :list="item.children" select -->
+      <TreeList :list="item.children" @select="handleClick(item)" />
     </li>
   </ul>
 </template>
@@ -26,7 +27,7 @@ export default {
   name: "TreeList",
   props: {
     // 数据结构 [{title:'类型',children:[{title:'类型',selected}],selected:true},{},{}]
-    // event defualt seleted
+    // event seleted
     list: {
       type: Array,
       default: () => [],
