@@ -5,7 +5,12 @@
       <span>日期: {{ blog.createDate }}</span>
       <span>浏览量: {{ blog.scanNumber }}</span>
       <a href="#data-form-container">评论: {{ blog.commentNumber }}</a>
-      <a href="">{{ blog.category.name }}</a>
+      <router-link :to="{
+        name: 'CategoryBlog',
+        params: {
+          categoryid: blog.category.id
+        }
+      }">{{ blog.category.name }}</router-link>
     </div>
     <div class="content-html" v-html="blog.htmlContent"></div>
   </div>
@@ -19,9 +24,16 @@ export default {
       required: true,
     },
   },
-  mounted(){
-    const container = document.querySelector('.markdown-image');
-  }
+  mounted() {
+    const style = document.createElement('style');
+    const str = `
+    .markdown-image img{
+      width: 100% !important;
+    }
+    `
+    style.innerHTML = str;
+    document.head.appendChild(style)
+  },
 };
 </script>
 
@@ -38,5 +50,4 @@ export default {
 pre {
   background: #008c8c;
 }
-
 </style>

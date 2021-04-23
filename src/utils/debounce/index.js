@@ -1,6 +1,5 @@
-export function debounce(handle,duration) {
+export default function (handle, duration) {
   let timer;
-  
   return (...arg) => {
     clearInterval(timer);
     timer = setTimeout(() => {

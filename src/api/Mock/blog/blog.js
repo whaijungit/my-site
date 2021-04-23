@@ -33,7 +33,7 @@ Mock.mock(/^\/api\/blog(\?.+)?$/, 'get', function (options) {
         },
         "scanNumber|0-3000": 0, // 浏览量
         "commentNumber|0-3000": 0, // 评论量
-        "thumb|1": [Mock.Random.image('400x400', '#008c8c', '#fff', 'Random-img'), Mock.Random.image('300x250', '#000', 'red', 'Random-img')],
+        "thumb|1": '@image(300x250, @color, #fff, @natural)',
         'createDate': '@datetime'
       }]
     }
@@ -294,7 +294,7 @@ Mock.mock(/^\/api\/comment\/?(\?.+)?$/, 'get', function (options) {
     msg: '请求成功',
     type: 'success',
     data: {
-      "total|2000-3000": 0,
+      total: 53,
       [`rows|${query.limit || 10}`]: [{
         id: "@guid",
         nickname: "@cname",

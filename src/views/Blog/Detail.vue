@@ -1,7 +1,7 @@
 <template>
   <Layout>
     <template #main>
-      <div class="main-container" v-loading="isLoading">
+      <div class="main-container" ref="blogContainer" v-loading="isLoading">
         <BlogDetail :blog="data" v-if="data" />
         <BlogCommont v-if="!isLoading" />
       </div>
@@ -29,9 +29,38 @@ export default {
     BlogToc,
     BlogCommont,
   },
+  data() {
+    return {
+      scrollTop: 0,
+    };
+  },
+  created() {
+    this.$bus.$on("setMainScroll", this.handleSetMainScroll);
+  },
+  mounted() {
+    this.$refs.blogContainer.addEventListener("scroll", this.handleScroll);
+  },
+  updated(){
+    const hash = location.hash;
+    location.hash = '';
+    setTimeout(() => {
+      location.hash = hash;
+      console.log('set hash');
+    }, 50);
+  },
+  beforeDestroy() {
+    this.$bus.$emit("mainScroll");
+    this.$refs.blogContainer.removeEventListener("scroll", this.handleScroll);
+  },
   methods: {
     async fetchData() {
       return await getBlog(this.$route.params.id);
+    },
+    handleScroll() {
+      this.$bus.$emit("mainScroll", this.$refs.blogContainer);
+    },
+    handleSetMainScroll(scrollTop) {
+      this.$refs.blogContainer.scrollTop = scrollTop;
     },
   },
 };
