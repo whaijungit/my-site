@@ -1,33 +1,32 @@
 <template>
   <ul class="contact-container">
     <li>
-      <a>
+      <a :href="data.github" target="_blank">
         <div class="icon">
           <Icon type="github" />
         </div>
-        <span>12321435</span>
+        <span>{{ data.githubName }}</span>
       </a>
     </li>
     <li>
-      <a href="mailto:1033161981@qq.com">
+      <a :href="`mailto:${data.mail}`">
         <div class="icon">
           <Icon type="mail" />
         </div>
-        <span>12321435</span>
+        <span>{{ data.mail }}</span>
       </a>
     </li>
     <li>
-      <a href="tencent://message/?Menu=yes&uin=1033161981&Service=300&sigT=45a1e5847943b64c6ff3990f8a9e644d2b31356cb0b4ac6b24663a3c8dd0f8aa12a595b1714f9d45">
+      <a
+        :href="`tencent://message/?Menu=yes&uin=${data.qq}&Service=300&sigT=45a1e5847943b64c6ff3990f8a9e644d2b31356cb0b4ac6b24663a3c8dd0f8aa12a595b1714f9d45`"
+      >
         <div class="icon">
           <Icon type="qq" />
         </div>
-        <span>1033161981</span>
+        <span>{{data.qq}}</span>
       </a>
       <div class="pop">
-        <img
-          src="@/assets/image/QRcode.jpg"
-          alt=""
-        />
+        <img :src="data.QRcode" alt="" />
       </div>
     </li>
     <li>
@@ -35,13 +34,10 @@
         <div class="icon">
           <Icon type="weixin" />
         </div>
-        <span>ScvioKey</span>
+        <span>{{data.weixin}}</span>
       </a>
       <div class="pop">
-        <img
-          src="@/assets/image/QRcode.jpg"
-          alt=""
-        />
+        <img :src="data.QRcode" alt="" />
       </div>
     </li>
   </ul>
@@ -49,9 +45,13 @@
 
 <script>
 import Icon from "@/components/Icon";
+import { mapState } from "vuex";
 export default {
   components: {
     Icon,
+  },
+  computed: {
+    ...mapState("setting", ["data"]),
   },
 };
 </script>
@@ -95,7 +95,7 @@ export default {
     bottom: @itemHeigth + 3px;
     transform: scaleY(0);
     transform-origin: center bottom;
-    transition: .3s;
+    transition: 0.3s;
     img {
       width: 100px;
       height: 100px;

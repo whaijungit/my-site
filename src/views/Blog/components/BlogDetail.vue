@@ -1,5 +1,5 @@
 <template>
-  <div class="blog-detail-container">
+  <div class="blog-detail-container" ref="div">
     <h2>{{ blog.title }}</h2>
     <div class="aside">
       <span>日期: {{ blog.createDate }}</span>

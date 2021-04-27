@@ -8,11 +8,12 @@
         height: size + 'px',
       }"
     />
-    <h1 class="nick">同学T</h1>
+    <h1 class="nick" v-if="data">{{ data.siteTitle }}</h1>
   </div>
 </template>
 
 <script>
+import { mapState } from "vuex";
 export default {
   props: {
     url: {
@@ -24,6 +25,9 @@ export default {
       default: 80,
     },
   },
+  computed: {
+    ...mapState("setting", ["data"]),
+  },
 };
 </script>
 
@@ -34,11 +38,11 @@ export default {
     object-fit: cover;
   }
   .nick {
-      display: block;
-      margin: 0;
-      font-size: 14px;
-      font-weight: bold;
-      color: #fff;
-    }
+    display: block;
+    margin: 0;
+    font-size: 14px;
+    font-weight: bold;
+    color: #fff;
+  }
 }
 </style>

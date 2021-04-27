@@ -1,18 +1,20 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import banner from './banner'
+import setting from './setting'
+import about from './about'
+import project from './project'
 
 Vue.use(Vuex)
 
-
-const store = new Vuex.Store({
-  state: { // 仓库数据
+export default new Vuex.Store({
+  modules: {
+    banner,
+    setting,
+    about,
+    project
   },
-  mutations: { // 数据有哪些变化
-  },
-  actions: {
-  }
+  strict: true
 })
 
-window.store = store;
 
-export default store

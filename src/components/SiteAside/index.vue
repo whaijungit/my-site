@@ -1,16 +1,14 @@
 <template>
   <div class="site-aside-container">
-    <div class="avatar">
-      <Aavatar
-        :url="'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Ftupian.qqw21.com%2Farticle%2FUploadPic%2F2021-2%2F20212262258173129.jpg&refer=http%3A%2F%2Ftupian.qqw21.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1620646603&t=f1b383b33fcad7029b7a982bf1005fa6'"
-      />
-    </div>
+    <template v-if="data">
+    <div class="avatar"><Aavatar :url="data.avatar" /></div>
     <div class="Menu">
       <Menu />
     </div>
     <div class="contact">
       <Contact />
     </div>
+    </template>
   </div>
 </template>
 
@@ -18,11 +16,16 @@
 import Aavatar from "@/components/Aavatar";
 import Contact from "@/components/SiteAside/Contact";
 import Menu from "@/components/SiteAside/Menu";
+import { mapState } from "vuex";
+
 export default {
   components: {
     Aavatar,
     Contact,
     Menu,
+  },
+  computed: {
+    ...mapState("setting", ["data"]),
   },
 };
 </script>

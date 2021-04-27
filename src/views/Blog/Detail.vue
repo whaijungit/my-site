@@ -1,7 +1,7 @@
 <template>
   <Layout>
     <template #main>
-      <div class="main-container" ref="blogContainer" v-loading="isLoading">
+      <div class="main-container" ref="detailContainer" v-loading="isLoading">
         <BlogDetail :blog="data" v-if="data" />
         <BlogCommont v-if="!isLoading" />
       </div>
@@ -21,8 +21,11 @@ import Layout from "@/components/Layout";
 import BlogDetail from "./components/BlogDetail";
 import BlogToc from "./components/BlogToc";
 import BlogCommont from "./components/BlogCommont";
+import mainScroll from "@/mixins/mainScroll";
+import { titleContoller } from "@/utils";
+
 export default {
-  mixins: [fetchData(null)],
+  mixins: [fetchData(null), mainScroll("detailContainer")],
   components: {
     Layout,
     BlogDetail,
@@ -34,33 +37,11 @@ export default {
       scrollTop: 0,
     };
   },
-  created() {
-    this.$bus.$on("setMainScroll", this.handleSetMainScroll);
-  },
-  mounted() {
-    this.$refs.blogContainer.addEventListener("scroll", this.handleScroll);
-  },
-  updated(){
-    const hash = location.hash;
-    location.hash = '';
-    setTimeout(() => {
-      location.hash = hash;
-      console.log('set hash');
-    }, 50);
-  },
-  beforeDestroy() {
-    this.$bus.$emit("mainScroll");
-    this.$refs.blogContainer.removeEventListener("scroll", this.handleScroll);
-  },
   methods: {
     async fetchData() {
-      return await getBlog(this.$route.params.id);
-    },
-    handleScroll() {
-      this.$bus.$emit("mainScroll", this.$refs.blogContainer);
-    },
-    handleSetMainScroll(scrollTop) {
-      this.$refs.blogContainer.scrollTop = scrollTop;
+      const resp = await getBlog(this.$route.params.id);
+      titleContoller.setRouterTitle(resp.title);
+      return resp;
     },
   },
 };

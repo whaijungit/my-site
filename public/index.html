@@ -5,13 +5,30 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport" />
     <link rel="icon" href="<%= BASE_URL %>favicon.ico">
-    <title><%= htmlWebpackPlugin.options.title %></title>
   </head>
   <body>
     <noscript>
       <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
     </noscript>
-    <div id="app"></div>
+    <div id="app">
+      <style>
+        .default {
+          position: fixed;
+          width: 200px;
+          height: 200px;
+          object-fit: cover;
+          top: 50%;
+          left: 50%;
+          margin-left: -100px;
+          margin-top: -100px;
+        }
+        body {
+          background-color: rgb(18, 124, 199);
+        }
+      </style>
+      <img class="default" src="./img/default1.gif" title="loading...">
+    </div>
     <!-- built files will be auto injected -->
+    
   </body>
 </html>

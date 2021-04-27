@@ -1,19 +1,10 @@
-import Vue from 'vue'
+import Vue  from './setup'
 import App from './App.vue'
-import './assets/styles/globa.less'
-import { showMessage, debounce } from './utils'
 import router from './router'
-import './api/Mock'
-import VLoading from './directives/Loading'
-import Vlazy from './directives/lazy'
-import './eventBus'
-Vue.prototype.$showMessage = showMessage;
-Vue.directive('loading', VLoading)
-Vue.directive('lazy', Vlazy)
+import store from './store'
 
-const vm = new Vue({
+new Vue({
+  store,
   router,
   render: h => h(App)
 }).$mount('#app')
-
-window.vm = vm

@@ -1,5 +1,6 @@
 import Mock, { mock } from 'mockjs'
 import qs from 'querystring'
+import avatar from '@/assets/image/avatar.jpg'
 
 Mock.mock('/api/blogtype', 'get', {
   code: 200,
@@ -17,26 +18,31 @@ Mock.mock('/api/blogtype', 'get', {
 
 Mock.mock(/^\/api\/blog(\?.+)?$/, 'get', function (options) {
   const query = qs.parse(options.url)
+  const data = {
+    "total|2000-3000": 0,
+    [`rows|${query.limit || 10}`]: [{
+      id: '@guid',
+      title: '@ctitle(10,50)',
+      description: '@cparagraph(1, 3)',
+      category: {
+        'id|1-10': 3,
+        name: "分类@id",
+      },
+      "scanNumber|0-3000": 0, // 浏览量
+      "commentNumber|0-3000": 0, // 评论量
+      "thumb|1": '@image(300x250, @color, #fff, @natural)',
+      'createDate': '@datetime()'
+    }]
+  };
   return Mock.mock({
     code: 200,
     msg: '请求成功',
     type: 'success',
-    data: {
-      "total|2000-3000": 0,
-      [`rows|${query.limit || 10}`]: [{
-        id: '@guid',
-        title: '@ctitle(10,20)',
-        description: '@cparagraph(1, 3)',
-        category: {
-          'id|1-10': 3,
-          name: "分类@id",
-        },
-        "scanNumber|0-3000": 0, // 浏览量
-        "commentNumber|0-3000": 0, // 评论量
-        "thumb|1": '@image(300x250, @color, #fff, @natural)',
-        'createDate': '@datetime'
-      }]
-    }
+    data,
+    // data: {
+    //   total: 0,
+    //   rows: 0
+    // }
   })
 })
 
@@ -54,7 +60,7 @@ Mock.mock(/^\/api\/blog\/[^/]+$/, 'get', {
     description: '@cparagraph(1, 3)',
     "scanNumber|0-3000": 0, // 浏览量
     "commentNumber|0-3000": 0, // 评论量
-    'createDate': '@datetime',
+    'createDate': '@datetime()',
     toc: [
       { name: "概述", anchor: "article-md-title-1" },
       {
@@ -279,10 +285,7 @@ Mock.mock('/api/comment', 'post', {
     content: "@cparagraph(1, 10)",
     createDate: Date.now(),
     "avatar|1": [
-      "https://qiheizhiya.oss-cn-shenzhen.aliyuncs.com/image/avatar6.jpg",
-      "https://qiheizhiya.oss-cn-shenzhen.aliyuncs.com/image/avatar4.jpg",
-      "https://qiheizhiya.oss-cn-shenzhen.aliyuncs.com/image/avatar8.jpg",
-      "https://qiheizhiya.oss-cn-shenzhen.aliyuncs.com/image/avatar2.jpg",
+      avatar
     ],
   },
 })
@@ -299,12 +302,9 @@ Mock.mock(/^\/api\/comment\/?(\?.+)?$/, 'get', function (options) {
         id: "@guid",
         nickname: "@cname",
         content: "@cparagraph(1, 10)",
-        createDate: '@datetime',
+        createDate: '@datetime()',
         "avatar|1": [
-          "https://qiheizhiya.oss-cn-shenzhen.aliyuncs.com/image/avatar6.jpg",
-          "https://qiheizhiya.oss-cn-shenzhen.aliyuncs.com/image/avatar4.jpg",
-          "https://qiheizhiya.oss-cn-shenzhen.aliyuncs.com/image/avatar8.jpg",
-          "https://qiheizhiya.oss-cn-shenzhen.aliyuncs.com/image/avatar2.jpg",
+          avatar
         ],
       }]
     }

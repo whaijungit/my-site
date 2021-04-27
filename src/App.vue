@@ -18,12 +18,13 @@
 import Layout from "@/components/Layout";
 import SiteAside from "@/components/SiteAside";
 import Top from "@/components/Top";
+
 export default {
   name: "App",
   components: {
     Layout,
     SiteAside,
-    Top
+    Top,
   },
 };
 </script>
@@ -33,7 +34,7 @@ export default {
   width: 100%;
   height: 100vh;
   .aside {
-    width: 200px;
+    width: 250px;
     height: 100%;
     position: relative;
   }

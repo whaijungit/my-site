@@ -11,7 +11,8 @@
               },
             }"
           >
-            <img v-lazy="item.thumb" :alt="item.title" :title="item.title" />
+            <!-- <img v-lazy="item.thumb" :alt="item.title" :title="item.title" /> -->
+            <img v-lazy="item.thumb" />
           </RouterLink>
         </div>
         <div class="main">
@@ -45,6 +46,7 @@
         </div>
       </li>
     </ul>
+    <Empty v-if="!data.total && !isLoading" />
     <!-- 分页放到这里 -->
     <Pager
       v-if="data.total"
@@ -58,12 +60,16 @@
 </template>
 <script>
 import Pager from "@/components/Pager";
+import Empty from "@/components/Empty";
 import fetchData from "@/mixins/fetchData";
 import { getBlogs } from "@/api/Blog/blog";
+import mainScroll from "@/mixins/mainScroll";
+
 export default {
-  mixins: [fetchData({})],
+  mixins: [fetchData({ total: 0, rows: [] }), mainScroll("container")],
   components: {
     Pager,
+    Empty,
   },
   computed: {
     // 获取路由信息 categoryid page第几 limit每页多条数据

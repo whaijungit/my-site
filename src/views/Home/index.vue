@@ -2,7 +2,7 @@
   <div
     class="home-container"
     ref="container"
-    v-loading="isLoading"
+    v-loading="loading"
     @wheel="handleWheel"
   >
     <ul
@@ -96,16 +96,12 @@
 </style>
 
 <script>
-import ImageLoader from "@/components/ImageLoader";
 import CarouseItem from "./components/CarouseItem";
 import Icon from "@/components/Icon";
-import { getBanners } from "@/api/Blog/banner";
-import fetchData from "@/mixins/fetchData";
+import { mapState } from "vuex";
 export default {
-  mixins: [fetchData([])],
   name: "Home",
   components: {
-    ImageLoader,
     Icon,
     CarouseItem,
   },
@@ -120,6 +116,10 @@ export default {
     marginTop() {
       return -this.index * this.containerHeight + "px";
     },
+    ...mapState("banner", ["loading", "data"]),
+  },
+  created() {
+    this.$store.dispatch('banner/fetchBanners')
   },
   mounted() {
     this.containerHeight = this.$refs.container.clientHeight;
@@ -129,9 +129,6 @@ export default {
     window.removeEventListener("resize", this.handleResize);
   },
   methods: {
-    async fetchData() {
-      return await getBanners();
-    },
     siwtchTo(i) {
       this.index = i;
     },

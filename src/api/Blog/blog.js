@@ -1,5 +1,5 @@
 // 获取文章接口
-import requset from '@/api/Request/request';
+import requset from '../Request/request';
 
 /**
  * 获取分页文章列表数据
